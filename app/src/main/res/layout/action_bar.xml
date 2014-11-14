@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/holo_blue_bright"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/button_actionbar"
+        android:background="#00ffffff"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="48dp"
+        android:layout_height="match_parent" />
+    <TextView
+        android:layout_centerInParent="true"
+        android:text="@string/action_text"
+        android:textSize="30sp"
+        android:textColor="#ffffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <Button
+        android:background="#00ffffff"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="true"
+        android:layout_width="48dp"
+        android:layout_height="match_parent" />
+</RelativeLayout>

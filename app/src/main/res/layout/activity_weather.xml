@@ -1,0 +1,126 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weather_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg0_fine_day"
+    android:orientation="vertical"
+    tools:context="com.weixiaokang.locationrecord.WeatherActivity">
+    <RelativeLayout
+        android:background="@android:color/holo_blue_light"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <ImageView
+            android:id="@+id/open_view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/airnut_more_pressed"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/refresh_view"
+            android:background="@drawable/abs__spinner_48_inner_holo"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:scaleType="centerInside"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/image_1"
+            android:src="@drawable/cloudy_cloud1"
+            android:background="#00ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/image_2"
+            android:src="@drawable/cloudy_cloud2"
+            android:background="#00ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/image_3"
+            android:src="@drawable/cloudy_cloud3"
+            android:background="#00ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/image_4"
+            android:src="@drawable/cloudy_cloud4"
+            android:background="#00ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/image_5"
+            android:src="@drawable/cloudy_cloud5"
+            android:background="#00ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/weather_tv"
+                    android:textColor="#ffffffff"
+                    android:gravity="start"
+                    android:textSize="30sp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+                 <ImageView
+                    android:id="@+id/weather_image"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/du_tv"
+                android:layout_weight="1"
+                android:textColor="#ffffffff"
+                android:gravity="center"
+                android:textSize="60sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/city_tv"
+                    android:textColor="#ffffffff"
+                    android:gravity="top|end"
+                    android:textSize="30sp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:id="@+id/time_tv"
+                    android:textColor="#ffffffff"
+                    android:gravity="center|right"
+                    android:textSize="30sp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <ListView
+        android:id="@+id/listview"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+</LinearLayout>

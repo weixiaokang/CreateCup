@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/list_image"
+        android:src="@drawable/mojitip_11"
+        android:scaleType="centerInside"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/list_tv"
+        android:textColor="#ff000000"
+        android:gravity="start|center"
+        android:layout_weight="5"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/list_button"
+        android:layout_weight="1"
+        android:text="删除"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+</LinearLayout>
