@@ -38,7 +38,7 @@ public class WeatherActivity extends Activity {
     private Handler handler;
     private Thread thread, thread1;
     private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, weatherImage, openView, refreshView;
-    private TextView weatherTv, tempTv, cityTv, timeTv, localTv, dataTv;
+    private TextView weatherTv, tempTv, cityTv, timeTv, localTv, dataTv, settingTv;
     private String weathers, temps, citys, times;
     private String[] date = new String[3], weather = new String[3];
     private int[] image = new int[3];
@@ -239,6 +239,7 @@ public class WeatherActivity extends Activity {
         timeTv = (TextView) findViewById(R.id.time_tv);
         localTv = (TextView) findViewById(R.id.location_tv);
         dataTv = (TextView) findViewById(R.id.data_tv);
+        settingTv = (TextView) findViewById(R.id.setting_tv);
         weatherImage = (ImageView) findViewById(R.id.weather_image);
         imageView1 = (ImageView) findViewById(R.id.image_1);
         imageView2 = (ImageView) findViewById(R.id.image_2);
@@ -276,6 +277,14 @@ public class WeatherActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WeatherActivity.this, DataActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        settingTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WeatherActivity.this, SettingActivity.class);
                 startActivity(intent);
             }
         });

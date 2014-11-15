@@ -22,6 +22,8 @@
         android:id="@+id/list_button"
         android:layout_weight="1"
         android:text="删除"
+        android:textColor="#ffffffff"
+        android:background="#ffff3333"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 </LinearLayout>

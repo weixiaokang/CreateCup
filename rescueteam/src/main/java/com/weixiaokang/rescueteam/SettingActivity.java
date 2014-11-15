@@ -1,6 +1,7 @@
-package com.weixiaokang.locationrecord;
+package com.weixiaokang.rescueteam;
 
-import android.app.Activity;
+import android.content.SharedPreferences;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,26 +10,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.weixiaokang.locationrecord.util.SharedPreferencesUtil;
-import com.weixiaokang.locationrecord.util.ToastUtil;
 
+public class SettingActivity extends ActionBarActivity {
 
-public class SettingActivity extends Activity {
-
+    private EditText editText;
+    private Button button;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        Button buSetting = (Button) findViewById(R.id.bu_setting);
-        final EditText editText = (EditText) findViewById(R.id.ed_setting);
+        editText = (EditText) findViewById(R.id.num_et);
+        button = (Button) findViewById(R.id.num_but);
 
-        buSetting.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferencesUtil.numberFilter(SettingActivity.this, editText.getText().toString().trim());
-//                ToastUtil.showInCenter(SettingActivity.this, "设置完成");
-                Toast.makeText(SettingActivity.this, "设置完成", Toast.LENGTH_LONG).show();
+                String string = editText.getText().toString().trim();
+                sharedPreferences = getSharedPreferences("number", MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                editor.putString("num", "+86" + string);
+                editor.commit();
+                Toast.makeText(SettingActivity.this, "保存成功", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -37,7 +42,7 @@ public class SettingActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.setting, menu);
+        getMenuInflater().inflate(R.menu.menu_setting, menu);
         return true;
     }
 

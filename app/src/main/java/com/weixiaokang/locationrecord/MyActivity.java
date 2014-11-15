@@ -5,10 +5,8 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
@@ -30,7 +28,6 @@ import com.weixiaokang.locationrecord.util.Constants;
 import com.weixiaokang.locationrecord.util.LogUtil;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class MyActivity extends Activity implements LocationSource, AMapLocationListener{
 

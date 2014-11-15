@@ -14,17 +14,19 @@
             android:id="@+id/open_view"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
             android:scaleType="centerInside"
-            android:src="@drawable/airnut_more_pressed"
-            android:layout_width="48dp"
+            android:src="@drawable/abc_ic_menu_moreoverflow_normal_holo_dark"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/refresh_view"
-            android:background="@drawable/abs__spinner_48_inner_holo"
+            android:background="@android:drawable/stat_notify_sync_noanim"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
             android:scaleType="centerInside"
-            android:layout_width="48dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
     <FrameLayout

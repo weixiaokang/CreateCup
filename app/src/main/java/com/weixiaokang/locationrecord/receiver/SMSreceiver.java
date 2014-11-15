@@ -24,7 +24,7 @@ public class SMSreceiver extends BroadcastReceiver {
                 smsMessages[i] = SmsMessage.createFromPdu(bytes);
             }
             SharedPreferences sharedPreferences = context.getSharedPreferences("number", Context.MODE_PRIVATE);
-            String number = sharedPreferences.getString("number", "+8618120170219");
+            String number = sharedPreferences.getString("number", "+8615951911977");
             StringBuilder[] stringBuffer = new StringBuilder[pdus.length];
             int count = 0;
             if (smsMessages.length > 0) {
