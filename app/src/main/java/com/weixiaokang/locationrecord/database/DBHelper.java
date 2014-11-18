@@ -27,12 +27,13 @@ public class DBHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "locationdata";
     private static final String ID = "_id";
+    private static final String NUM = "num";
     private static final String TIME = "time";
     private static final String LONGITUDE = "longitude";
     private static final String LATITUDE = "latitude";
     private SQLiteDatabase database;
     private static class DBOpenHelper extends SQLiteOpenHelper {
-        private static final String CREATE_TABLE = "create table " + TABLE_NAME + " (" + ID + " integer primary key autoincrement, " + TIME + " text not null, " + LONGITUDE + " text not null, " + LATITUDE + " text not null);";
+        private static final String CREATE_TABLE = "create table " + TABLE_NAME + " (" + ID + " integer primary key autoincrement, " + NUM + " integer, " + TIME + " text not null, " + LONGITUDE + " text not null, " + LATITUDE + " text not null);";
         public DBOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
@@ -59,7 +60,9 @@ public class DBHelper {
      * @param locationData the data needed insert
      */
     public void add(LocationData locationData) {
+        LogUtil.i(Constants.DATA, "-->add");
         ContentValues values = new ContentValues();
+        values.put(NUM, locationData.getNum());
         values.put(TIME, locationData.getTime());
         values.put(LONGITUDE, locationData.getLongitude());
         values.put(LATITUDE, locationData.getLatitude());
@@ -67,6 +70,7 @@ public class DBHelper {
     }
 
     public ArrayList<LocationData> queryAll() {
+        LogUtil.i(Constants.DATA, "-->queryAll");
         ArrayList<LocationData> list = null;
         Cursor cursor = database.query(TABLE_NAME, null, null, null, null,null, null);
         if (cursor != null) {
@@ -74,9 +78,10 @@ public class DBHelper {
             while (cursor.moveToNext()) {
                 LocationData locationData = new LocationData();
                 locationData.setID(cursor.getInt(0));
-                locationData.setTime(cursor.getString(1));
-                locationData.setLongitude(cursor.getString(2));
-                locationData.setLatitude(cursor.getString(3));
+                locationData.setNum(cursor.getInt(1));
+                locationData.setTime(cursor.getString(2));
+                locationData.setLongitude(cursor.getString(3));
+                locationData.setLatitude(cursor.getString(4));
                 list.add(locationData);
             }
         }
@@ -115,6 +120,15 @@ public class DBHelper {
         }
     }
 
+    public void deleteByNum(Integer... nums) {
+        LogUtil.i(Constants.DATA, "-->deleteByNum");
+        if (nums.length > 0) {
+            for(int num : nums) {
+                database.delete(TABLE_NAME, NUM + "=?", new String[] {Integer.toString(num)});
+            }
+        }
+    }
+
     /**
      * get the number of data
      * @return the number
@@ -138,9 +152,10 @@ public class DBHelper {
 
         if (cursor.moveToLast()) {
             locationData.setID(cursor.getInt(0));
-            locationData.setTime(cursor.getString(1));
-            locationData.setLongitude(cursor.getString(2));
-            locationData.setLatitude(cursor.getString(3));
+            locationData.setNum(cursor.getInt(1));
+            locationData.setTime(cursor.getString(2));
+            locationData.setLongitude(cursor.getString(3));
+            locationData.setLatitude(cursor.getString(4));
         }
         cursor.close();
         return locationData;
@@ -153,6 +168,7 @@ public class DBHelper {
     public void update(LocationData locationData) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID, locationData.getID());
+        contentValues.put(NUM, locationData.getNum());
         contentValues.put(TIME, locationData.getTime());
         contentValues.put(LONGITUDE, locationData.getLongitude());
         contentValues.put(LATITUDE, locationData.getLatitude());

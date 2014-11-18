@@ -19,10 +19,12 @@ import android.widget.TextView;
 import com.weixiaokang.locationrecord.MyActivity;
 import com.weixiaokang.locationrecord.R;
 import com.weixiaokang.locationrecord.database.DBHelper;
+import com.weixiaokang.locationrecord.database.LocationData;
 import com.weixiaokang.locationrecord.util.Constants;
 import com.weixiaokang.locationrecord.util.LogUtil;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class ListViewAdapter extends BaseAdapter {
     public LinkedList<String> list;
@@ -67,7 +69,7 @@ public class ListViewAdapter extends BaseAdapter {
         } else {
             mHolder = (ViewHolder) mConvertView.getTag();
         }
-        mConvertView.setOnTouchListener(mTouchListener);
+//        mConvertView.setOnTouchListener(mTouchListener);
         mHolder.Delete.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +77,8 @@ public class ListViewAdapter extends BaseAdapter {
                 if (BtnDelete != null) {
                     BtnDelete.setVisibility(View.INVISIBLE);
                     list.remove(mPosition);
+                    updataNum();
+                    dbHelper.deleteByNum(mPosition);
                     notifyDataSetChanged();
                 }
             }
@@ -92,11 +96,11 @@ public class ListViewAdapter extends BaseAdapter {
             switch (mEvent.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     mDownX = mEvent.getX();
-
+                    LogUtil.i(Constants.TEST, "mDownX" + mDownX);
                     break;
                 case MotionEvent.ACTION_UP:
                     mUpX = mEvent.getX();
-
+                    LogUtil.i(Constants.TEST, "mUpX" + mUpX);
                     if (BtnDelete != null) {
                         if (Math.abs(mDownX - mUpX) > 25) {
                             LogUtil.i(Constants.DATA, "-->bad");
@@ -134,6 +138,52 @@ public class ListViewAdapter extends BaseAdapter {
         }
     };
 
+    public void setOnMyTouchListener(View mView, MotionEvent mEvent) {
+        final ViewHolder holder = (ViewHolder) mView.getTag();
+        BtnDelete = holder.Delete;
+        switch (mEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mDownX = mEvent.getX();
+                LogUtil.i(Constants.TEST, "mDownX" + mDownX);
+                break;
+            case MotionEvent.ACTION_UP:
+                mUpX = mEvent.getX();
+                LogUtil.i(Constants.TEST, "mUpX" + mUpX);
+                if (BtnDelete != null) {
+                    if (Math.abs(mDownX - mUpX) > 25) {
+                        LogUtil.i(Constants.DATA, "-->bad");
+                        if (IsShowButton) {
+                            HideAnimation(holder.Delete);
+                            holder.Delete.setVisibility(View.INVISIBLE);
+                            IsShowButton = false;
+                        } else {
+                            ShowAnimation(holder.Delete);
+                            holder.Delete.setVisibility(View.VISIBLE);
+                            IsShowButton = true;
+                        }
+
+                        BtnDelete = holder.Delete;
+                    }
+                }
+                if (!IsShowButton && Math.abs(mDownX - mUpX) < 25) {
+                    LogUtil.i(Constants.DATA, "-->good");
+                    String text = holder.Content.getText().toString();
+                    String longtitude = text.substring(23, text.lastIndexOf(","));
+                    String latitude = text.substring(text.lastIndexOf(":") + 1, text.length());
+                    double a = Double.parseDouble(longtitude);
+                    double b = Double.parseDouble(latitude);
+                    LogUtil.i(Constants.DATA, " " + a + " " + b);
+                    Intent intent = new Intent(mContext, MyActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putDouble("longtitude", a);
+                    bundle.putDouble("latitude", b);
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                }
+                break;
+        }
+    }
+
     public void ShowAnimation(View v) {
         Animation Ani_Alpha = new AlphaAnimation(0.1f, 1.0f);
         Ani_Alpha.setDuration(500);
@@ -154,4 +204,11 @@ public class ListViewAdapter extends BaseAdapter {
         Button Delete;
     }
 
+    private void updataNum() {
+        Constants.NUM_COUNT--;
+        List<LocationData> locationDataList = dbHelper.queryAll();
+        for (int i = 0; i < list.size(); i++) {
+            locationDataList.get(i).setNum(i);
+        }
+    }
 }

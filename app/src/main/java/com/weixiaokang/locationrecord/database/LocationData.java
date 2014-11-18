@@ -3,13 +3,15 @@ package com.weixiaokang.locationrecord.database;
 public class LocationData {
 
     private int ID;
+    private int num;
     private String city;
     private String time;
     private String longitude;
     private String latitude;
 
     public LocationData() {}
-    public LocationData(String time, String longitude, String latitude) {
+    public LocationData(int num, String time, String longitude, String latitude) {
+        this.num = num;
         this.time = time;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -17,6 +19,10 @@ public class LocationData {
 
     public int getID() {
         return ID;
+    }
+
+    public int getNum() {
+        return num;
     }
 
     public String getTime() {
@@ -33,6 +39,10 @@ public class LocationData {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public void setTime(String time) {
