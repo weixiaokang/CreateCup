@@ -13,6 +13,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
 import com.weixiaokang.locationrecord.MyActivity;
+import com.weixiaokang.locationrecord.NaviActivity;
 import com.weixiaokang.locationrecord.R;
 import com.weixiaokang.locationrecord.database.DBHelper;
 import com.weixiaokang.locationrecord.database.LocationData;
@@ -58,7 +59,7 @@ public class DataService extends Service {
                     .setContentText(longtitude[i] + " " +latitude[i])
                     .setAutoCancel(true)
                     .setOngoing(true);
-            Intent intent1 = new Intent(getApplicationContext(), MyActivity.class);
+            Intent intent1 = new Intent(getApplicationContext(), NaviActivity.class);
             intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             intent1.putExtras(bundle);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, PendingIntent.FLAG_CANCEL_CURRENT);

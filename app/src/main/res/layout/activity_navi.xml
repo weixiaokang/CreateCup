@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.weixiaokang.locationrecord.NaviActivity">
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/grey"
+        android:padding="5dp"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+    <Button
+        android:id="@+id/navi_but"
+        android:layout_weight="1"
+        android:background="#ff33b5e5"
+        android:text="开始导航"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/distance_tv"
+            android:gravity="center|start"
+            android:text="路程："
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_weight="1"
+            android:text="时间："
+            android:gravity="center|start"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</FrameLayout>

@@ -58,6 +58,18 @@
             android:name="com.weixiaokang.locationrecord.SettingActivity"
             android:label="@string/title_activity_setting" >
         </activity>
+        <activity
+            android:name="com.weixiaokang.locationrecord.NaviActivity"
+            android:label="@string/title_activity_navi" >
+        </activity>
+        <activity
+            android:name="com.weixiaokang.locationrecord.RouteActivity"
+            android:label="@string/title_activity_route" >
+        </activity>
+        <activity
+            android:name="com.weixiaokang.locationrecord.NaviCustomActivity"
+            android:label="@string/title_activity_navi_custom" >
+        </activity>
     </application>
 
 </manifest>

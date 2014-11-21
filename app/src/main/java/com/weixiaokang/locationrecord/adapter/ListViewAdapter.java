@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.weixiaokang.locationrecord.MyActivity;
+import com.weixiaokang.locationrecord.NaviActivity;
 import com.weixiaokang.locationrecord.R;
 import com.weixiaokang.locationrecord.database.DBHelper;
 import com.weixiaokang.locationrecord.database.LocationData;
@@ -173,7 +174,7 @@ public class ListViewAdapter extends BaseAdapter {
                     double a = Double.parseDouble(longtitude);
                     double b = Double.parseDouble(latitude);
                     LogUtil.i(Constants.DATA, " " + a + " " + b);
-                    Intent intent = new Intent(mContext, MyActivity.class);
+                    Intent intent = new Intent(mContext, NaviActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putDouble("longtitude", a);
                     bundle.putDouble("latitude", b);
