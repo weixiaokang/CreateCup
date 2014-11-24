@@ -10,5 +10,6 @@
     <string name="hint_msg">您已出车祸，请不要轻举妄动，耐心等待救援\.\.\.</string>
     <string name="cancel_but">取消</string>
     <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_location">LocationActivity</string>
 
 </resources>

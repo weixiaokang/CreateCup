@@ -9,6 +9,8 @@ import android.telephony.SmsMessage;
 
 import com.weixiaokang.locationrecord.service.DataService;
 import com.weixiaokang.locationrecord.util.DateUtil;
+import com.weixiaokang.locationrecord.util.LogUtil;
+import com.weixiaokang.locationrecord.util.SharedPreferencesUtil;
 
 public class SMSreceiver extends BroadcastReceiver {
 
@@ -23,13 +25,13 @@ public class SMSreceiver extends BroadcastReceiver {
                 byte []bytes = (byte[]) pdus[i];
                 smsMessages[i] = SmsMessage.createFromPdu(bytes);
             }
-            SharedPreferences sharedPreferences = context.getSharedPreferences("number", Context.MODE_PRIVATE);
-            String number = sharedPreferences.getString("number", "+8615951911977");
+            String number = SharedPreferencesUtil.getNumber(context);
+            LogUtil.i("momoda", number + "\n" + smsMessages[0].getOriginatingAddress());
             StringBuilder[] stringBuffer = new StringBuilder[pdus.length];
             int count = 0;
             if (smsMessages.length > 0) {
                 for (int i = 0; i < smsMessages.length; i++) {
-                    if (smsMessages[i].getOriginatingAddress().equals(number)) {
+                    if (smsMessages[i].getOriginatingAddress().contains(number)) {
                         stringBuffer[count] = new StringBuilder();
                         stringBuffer[count].append(DateUtil.convertToTime(smsMessages[i].getTimestampMillis()) + " ")
                                 .append(smsMessages[i].getDisplayMessageBody());

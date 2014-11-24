@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.weixiaokang.rescueteam.service.LocationService;
 import com.weixiaokang.rescueteam.service.SetupService;
 
 public class SetupReceiver extends BroadcastReceiver {
@@ -20,6 +21,9 @@ public class SetupReceiver extends BroadcastReceiver {
             Intent newIntent1 = new Intent(context, SetupService.class);
             newIntent1.setAction("start");
             context.startService(newIntent1);
+
+            Intent newIntent2 = new Intent(context, LocationService.class);
+            context.startService(newIntent2);
         }
     }
 }

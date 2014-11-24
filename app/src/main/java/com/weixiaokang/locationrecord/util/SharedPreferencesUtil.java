@@ -6,10 +6,14 @@ import android.content.SharedPreferences;
 public class SharedPreferencesUtil {
 
     public static void numberFilter(Context context, String number) {
-        String s = "+86" + number;
         SharedPreferences preferences = context.getSharedPreferences("number", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("number", s);
-        editor.commit();
+        editor.putString("number", number);
+        editor.apply();
+    }
+
+    public static String getNumber(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("number", Context.MODE_PRIVATE);
+        return preferences.getString("number", "15951911977");
     }
 }

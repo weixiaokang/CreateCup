@@ -22,6 +22,8 @@ public class SettingActivity extends Activity {
 
         Button buSetting = (Button) findViewById(R.id.bu_setting);
         final EditText editText = (EditText) findViewById(R.id.ed_setting);
+        String s = SharedPreferencesUtil.getNumber(this);
+        editText.setHint(s);
 
         buSetting.setOnClickListener(new View.OnClickListener() {
             @Override

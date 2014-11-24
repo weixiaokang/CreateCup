@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.location.Location;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.TextPaint;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -205,6 +204,7 @@ public class NaviActivity extends ActionBarActivity implements AMap.OnMapLoadedL
             }
         });
     }
+
     private void calculateRoute() {
         LogUtil.i("heheda", "-->calculateRoute");
         if (!mIsGetGPS) {

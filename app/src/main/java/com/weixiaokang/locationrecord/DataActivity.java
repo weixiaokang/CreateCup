@@ -43,19 +43,21 @@ public class DataActivity extends ListActivity implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                LogUtil.i(Constants.TEST, "-->onTouch: " + event.getX());
-                x = (int) event.getX();
-                y = (int) event.getY();
-                position = listView.pointToPosition(x, y);
-                if (position == -1) {
-                    position = listView.getChildCount() - 1;
-                }
-            case MotionEvent.ACTION_UP:
-                LogUtil.i(Constants.TEST, "-->onTouch: " + event.getX());
-                ((ListViewAdapter)listView.getAdapter()).setOnMyTouchListener(listView.getChildAt(position), event);
-                break;
+        if (listView.getCount() != 0) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    LogUtil.i(Constants.TEST, "-->onTouch: " + event.getX());
+                    x = (int) event.getX();
+                    y = (int) event.getY();
+                    position = listView.pointToPosition(x, y);
+                    if (position == -1) {
+                        position = listView.getChildCount() - 1;
+                    }
+                case MotionEvent.ACTION_UP:
+                    LogUtil.i(Constants.TEST, "-->onTouch: " + event.getX());
+                    ((ListViewAdapter) listView.getAdapter()).setOnMyTouchListener(listView.getChildAt(position), event);
+                    break;
+            }
         }
         return false;
     }

@@ -1,9 +1,14 @@
 package com.weixiaokang.rescueteam;
 
 import android.app.PendingIntent;
+import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,16 +17,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationListener;
+import com.amap.api.location.LocationManagerProxy;
+import com.amap.api.location.LocationProviderProxy;
+import com.weixiaokang.rescueteam.service.LocationService;
 import com.weixiaokang.rescueteam.service.SetupService;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
-    private double value;
     private Button sendButtton, cancelButton;
     private boolean flag = false;
     private Vibrator vibrator;
+    private Location mLocation;
+    private String content;
+    private LocationService.LocationBinder mBunder;
+    private LocationService mService;
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mBunder = (LocationService.LocationBinder) service;
+            mService = mBunder.getLocationService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +56,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         final Intent intent = new Intent(this, SetupService.class);
         startService(intent);
+
+        Intent intent2 = new Intent(this, LocationService.class);
+        bindService(intent2, connection, BIND_AUTO_CREATE);
 
         initView();
 
@@ -54,7 +84,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void initView() {
-        value = getIntent().getDoubleExtra("value", 0);
         sendButtton = (Button) findViewById(R.id.send_but);
         cancelButton = (Button) findViewById(R.id.cancel_but);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
@@ -63,7 +92,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private void sendSMS() {
         SharedPreferences sharedPreferences = getSharedPreferences("number", MODE_PRIVATE);
         String address = sharedPreferences.getString("num", "+8615951911977");
-        String content = "help!";
+        mLocation = mService.getLocation();
+        if (mLocation != null) {
+            content = mLocation.getLongitude() + " " + mLocation.getLatitude();
+        } else {
+            content = "help!";
+        }
         Intent intent1 = new Intent(MainActivity.this, HelpActivity.class);
         startActivity(intent1);
         SmsManager smsManager = SmsManager.getDefault();
@@ -76,6 +110,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         sendButtton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -97,6 +132,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(connection);
     }
 
     @Override
