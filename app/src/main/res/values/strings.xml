@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AILR</string>
+    <string name="app_name">急救系统接收端</string>
     <string name="title_activity_text">TextActivity</string>
     <string name="action_text">我的位置</string>
     <string name="title_activity_weather">WeatherActivity</string>

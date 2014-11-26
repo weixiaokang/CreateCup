@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.weixiaokang.rescueteam.util.ActionBarUtil;
+
 
 public class HelpActivity extends ActionBarActivity {
 
@@ -12,6 +14,8 @@ public class HelpActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        ActionBarUtil.hide(this);
     }
 
 

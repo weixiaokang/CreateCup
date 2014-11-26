@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">rescueteam</string>
+    <string name="app_name">急救系统客户端</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="help_question">请问您需要帮助吗?</string>
     <string name="send_SMS">救助</string>
     <string name="title_activity_help">HelpActivity</string>
-    <string name="hint_msg">您已出车祸，请不要轻举妄动，耐心等待救援\.\.\.</string>
+    <string name="hint_msg">
+        您已出车祸，请不要轻举妄动，耐心等待救援。\n
+        1.可把身上的衣服撕成布条，对出血的伤口进行局部加压止血。\n
+        2.现场可找块小夹板、树枝等物，对患肢进行包扎固定。\n
+        3.把头偏向一边，不要仰着，这样会引起呕吐，使胃内容物引起呼吸道堵塞，造成窒息。\n
+        4.应把内脏尽量在原来的部位拿一个容器扣在腹壁上，不要把内脏放入腹腔内，以免造成腹腔感染。\n
+        5.及时对伤者进行口对口的人工呼吸，进行简单的心脏按摩。
+    </string>
     <string name="cancel_but">取消</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_location">LocationActivity</string>

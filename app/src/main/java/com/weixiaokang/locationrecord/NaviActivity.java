@@ -65,6 +65,7 @@ public class NaviActivity extends ActionBarActivity implements AMap.OnMapLoadedL
     private RouteOverLay mRouteOverLay;
     private double lat, lng;
     private LocationManagerProxy mLocationManger;
+    private String dis, timeS;
 
     private AMapLocationListener mLocationListener = new AMapLocationListener() {
 
@@ -195,11 +196,14 @@ public class NaviActivity extends ActionBarActivity implements AMap.OnMapLoadedL
                     if (mIsMapLoaded) {
                         mRouteOverLay.zoomToSpan();
                     }
-                    String dis = dis_tv.getText().toString() + String.valueOf(mAapNaviPath.getAllLength());
-                    String time = time_tv.getText().toString() + String.valueOf(mAapNaviPath.getAllTime());
+                    int length = mAapNaviPath.getAllLength();
+                    int time = mAapNaviPath.getAllTime() / 60;
+                    dis = dis_tv.getText().toString() + String.valueOf(length) + "(m)";
+                    timeS = time_tv.getText().toString() + String.valueOf(time) + "(min)";
                     dis_tv.setText(dis);
-                    time_tv.setText(time);
-
+                    time_tv.setText(timeS);
+                    dis = "";
+                    timeS = "";
                 }
             }
         });

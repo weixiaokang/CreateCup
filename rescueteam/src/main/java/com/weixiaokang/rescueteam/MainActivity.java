@@ -1,28 +1,22 @@
 package com.weixiaokang.rescueteam;
 
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationListener;
-import com.amap.api.location.LocationManagerProxy;
-import com.amap.api.location.LocationProviderProxy;
 import com.weixiaokang.rescueteam.service.LocationService;
 import com.weixiaokang.rescueteam.service.SetupService;
 
@@ -82,7 +76,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             }
         }, 1000);
     }
-
     private void initView() {
         sendButtton = (Button) findViewById(R.id.send_but);
         cancelButton = (Button) findViewById(R.id.cancel_but);

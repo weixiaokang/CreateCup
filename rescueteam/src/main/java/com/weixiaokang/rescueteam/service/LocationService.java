@@ -53,7 +53,6 @@ public class LocationService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i("location", "-->onCreate");
         mManager = LocationManagerProxy.getInstance(getApplicationContext());
         mManager.requestLocationData(LocationProviderProxy.AMapNetwork, 1000, 1, mListener);
         mManager.setGpsEnable(false);
