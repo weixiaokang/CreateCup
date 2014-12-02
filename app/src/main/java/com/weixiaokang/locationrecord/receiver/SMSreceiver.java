@@ -3,7 +3,6 @@ package com.weixiaokang.locationrecord.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 
@@ -17,6 +16,7 @@ public class SMSreceiver extends BroadcastReceiver {
     private static final String action = "android.provider.Telephony.SMS_RECEIVED";
     @Override
     public void onReceive(Context context, Intent intent) {
+        LogUtil.i("momoda", "-->onReceive");
         if (intent.getAction().equals(action)) {
             Bundle bundle = intent.getExtras();
             Object pdus[] = (Object[]) bundle.get("pdus");

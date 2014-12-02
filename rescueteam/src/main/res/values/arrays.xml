@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="number_array">
+        <item>@string/home_number</item>
+        <item>@string/at_number</item>
+        <item>@string/pf_number</item>
+        <item>@string/bxgs_number</item>
+    </array>
+</resources>

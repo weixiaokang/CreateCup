@@ -1,10 +1,11 @@
 package com.weixiaokang.rescueteam;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.weixiaokang.rescueteam.fragment.NumberFragment;
 import com.weixiaokang.rescueteam.util.ActionBarUtil;
 
 
@@ -16,8 +17,10 @@ public class HelpActivity extends ActionBarActivity {
         setContentView(R.layout.activity_help);
 
         ActionBarUtil.hide(this);
-    }
 
+        NumberFragment fragment = new NumberFragment();
+        fragment.show(getSupportFragmentManager(), "TAG");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

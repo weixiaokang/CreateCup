@@ -31,8 +31,8 @@ public class SettingActivity extends ActionBarActivity {
                 String string = editText.getText().toString().trim();
                 sharedPreferences = getSharedPreferences("number", MODE_PRIVATE);
                 editor = sharedPreferences.edit();
-                editor.putString("num", "+86" + string);
-                editor.commit();
+                editor.putString("num", string);
+                editor.apply();
                 Toast.makeText(SettingActivity.this, "保存成功", Toast.LENGTH_LONG).show();
             }
         });

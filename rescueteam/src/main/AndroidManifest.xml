@@ -21,9 +21,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name = "android.permission.CAMERA" />
-    <uses-feature android:name = "android.hardware.camera" />
-    <uses-feature android:name = "android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -32,7 +33,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="59f12153cc56103a86530209b40e3945" />
+            android:value="c812a310b67835a795a4eb3945f6fa74" />
 
         <activity
             android:name="com.weixiaokang.rescueteam.MainActivity"
@@ -73,10 +74,9 @@
             android:enabled="true"
             android:exported="true" >
         </service>
-
         <activity
-            android:name="com.weixiaokang.rescueteam.LocationActivity"
-            android:label="@string/title_activity_location" >
+            android:name="com.weixiaokang.rescueteam.CameraActivity"
+            android:label="@string/title_activity_camera" >
         </activity>
     </application>
 

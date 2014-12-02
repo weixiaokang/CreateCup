@@ -22,15 +22,15 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="610ef8b0019ffd7a4ca91ff0877de165" />
+            android:value="862c59ea9762ea36b85bc1ac20042d79" />
 
         <activity
             android:name="com.weixiaokang.locationrecord.MyActivity"
             android:label="@string/app_name" >
         </activity>
 
-        <receiver android:name="com.weixiaokang.locationrecord.receiver.SMSreceiver" >
-            <intent-filter>
+        <receiver android:name="com.weixiaokang.locationrecord.receiver.SMSreceiver">
+            <intent-filter android:priority="1000">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>

@@ -3,11 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
     android:gravity="center"
     tools:context=".MainActivity"
     android:background="#ff33b5e5">
-
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:text="@string/help_question"
         android:textSize="30sp"
@@ -42,4 +47,31 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <LinearLayout
+            android:id="@+id/my_layout"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ProgressBar
+                android:layout_width="48dp"
+                android:layout_height="match_parent" />
+            <TextView
+                android:gravity="center"
+                android:text="上传信息中......"
+                android:textColor="#ffffffff"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/PreviewView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
