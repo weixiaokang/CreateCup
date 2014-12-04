@@ -29,8 +29,8 @@
             android:label="@string/app_name" >
         </activity>
 
-        <receiver android:name="com.weixiaokang.locationrecord.receiver.SMSreceiver">
-            <intent-filter android:priority="1000">
+        <receiver android:name="com.weixiaokang.locationrecord.receiver.SMSreceiver" >
+            <intent-filter android:priority="1000" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
@@ -69,6 +69,10 @@
         <activity
             android:name="com.weixiaokang.locationrecord.NaviCustomActivity"
             android:label="@string/title_activity_navi_custom" >
+        </activity>
+        <activity
+            android:name="com.weixiaokang.locationrecord.PictureActivity"
+            android:label="@string/title_activity_picture" >
         </activity>
     </application>
 

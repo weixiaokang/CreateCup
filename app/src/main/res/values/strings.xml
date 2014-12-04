@@ -5,7 +5,7 @@
     <string name="title_activity_text">TextActivity</string>
     <string name="action_text">我的位置</string>
     <string name="title_activity_weather">WeatherActivity</string>
-    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_setting">设  置</string>
     <string name="title_activity_navi">NaviActivity</string>
     <string name="title_activity_route">RouteActivity</string>
     <string name="hello_world">Hello world!</string>
@@ -95,5 +95,6 @@
     <string name="preference_title_tts_pitch">语调</string>
     <string name="preference_default_tts_pitch">50</string>
     <string name="title_activity_navi_custom">NaviCustomActivity</string>
+    <string name="title_activity_picture">现场图片</string>
 
 </resources>

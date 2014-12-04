@@ -8,17 +8,70 @@
 
     <EditText
         android:id="@+id/num_et"
-        android:hint="输入接受号码"
+        android:hint="输入接收的亲人号码"
         android:inputType="phone"
         android:gravity="start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/one_tv"
+        android:layout_below="@id/num_et"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+    <EditText
+        android:id="@+id/bxgs_et"
+        android:hint="输入保险公司号码"
+        android:gravity="start"
+        android:layout_below="@id/one_tv"
+        android:inputType="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/two_tv"
+        android:layout_below="@id/bxgs_et"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+    <LinearLayout
+        android:id="@+id/my_camera_switch"
+        android:layout_below="@id/two_tv"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+    <TextView
+        android:id="@+id/three_tv"
+        android:text="照相功能"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <RadioButton
+            android:id="@+id/open"
+            android:text="开启"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/close"
+            android:text="关闭"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+    </LinearLayout>
     <Button
         android:id="@+id/num_but"
         android:text="确定"
         android:textColor="#ffffffff"
         android:background="#ff33b5e5"
-        android:layout_below="@id/num_et"
+        android:layout_below="@id/my_camera_switch"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"

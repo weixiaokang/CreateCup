@@ -55,11 +55,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:src="@drawable/user_home"
+                    android:layout_width="40dp"
+                    android:layout_height="48dp" />
+                <TextView
+                    android:id="@+id/picture_tv"
+                    android:text="现场图片"
+                    android:textSize="36sp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
                     android:src="@drawable/settings"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp" />
                 <TextView
-                    android:layout_width="10dp"
+                    android:layout_width="5dp"
                     android:layout_height="match_parent" />
                 <TextView
                     android:id="@+id/setting_tv"

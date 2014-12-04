@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 
 import com.weixiaokang.rescueteam.service.LocationService;
 import com.weixiaokang.rescueteam.service.SetupService;
+import com.weixiaokang.rescueteam.service.UploadService;
 import com.weixiaokang.rescueteam.util.MyCamera;
 import com.weixiaokang.rescueteam.util.StorageHelper;
 import com.weixiaokang.rescueteam.widget.CameraPreview;
@@ -123,8 +124,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
              Log.i("heheda", "--I have camera");
              mCamera = MyCamera.getCameraInstance(dir);
              mPreview = new CameraPreview(this, mCamera);
-             FrameLayout mFrameLayout = (FrameLayout)findViewById(R.id.PreviewView);
-             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.my_layout);
+             FrameLayout mFrameLayout = (FrameLayout) findViewById(R.id.PreviewView);
+             LinearLayout linearLayout = (LinearLayout) findViewById(R.id.my_layout);
              linearLayout.setVisibility(View.VISIBLE);
              mFrameLayout.setVisibility(View.VISIBLE);
              FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(1, 1);
@@ -134,7 +135,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                  @Override
                  public void onAutoFocus(boolean success, Camera camera) {
                      Log.i("heheda", "-->onAutoFucus" + ":" + success);
-                     if (success && camera != null) {
+                     if (camera == null) { Log.i("heheda", "camera is null"); }
+                     if (camera != null) {
                          mCamera.takePicture(mShutterCallback, null, mPicureCallback);
                      }
                  }
@@ -174,6 +176,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 mCamera.stopPreview();
                 Intent intent1 = new Intent(MainActivity.this, HelpActivity.class);
                 startActivity(intent1);
+                String path = mPictureFile.getAbsolutePath();
+                Bundle bundle = new Bundle();
+                bundle.putString("path", path);
+                Intent intent2 = new Intent(MainActivity.this, UploadService.class);
+                intent2.putExtras(bundle);
+                startService(intent2);
                 finish();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -201,7 +209,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         SmsManager smsManager = SmsManager.getDefault();
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, new Intent(), 0);
         smsManager.sendTextMessage(address, null, content, pendingIntent, null);
-        takePhoto();
+        sharedPreferences = getSharedPreferences("camera", MODE_PRIVATE);
+        boolean flag = sharedPreferences.getBoolean("camera", true);
+        if (flag) {
+            takePhoto();
+        } else {
+            Intent intent1 = new Intent(MainActivity.this, HelpActivity.class);
+            startActivity(intent1);
+        }
 //                mHandler.sendEmptyMessage(13041309);
     }
 
@@ -242,6 +257,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onPause() {
         super.onPause();
         unbindService(connection);
+        if (mCamera != null) {
+            mCamera.release();
+        }
     }
 
     @Override

@@ -24,9 +24,14 @@ public class NumberFragment extends DialogFragment {
         number[1] = sharedPreferences.getString("pf_number", "110");
         number[2] = sharedPreferences.getString("at_number", "120");
         number[3] = sharedPreferences.getString("bxgs_number", "95519");
+        String strings[] = new String[4];
+        strings[0] = number[0];
+        strings[1] = number[1] + " (警察)";
+        strings[2] = number[2] + " (医院)";
+        strings[3] = number[3] + " (保险公司)";
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("选择求助号码")
-                .setItems(number, new DialogInterface.OnClickListener() {
+                .setItems(strings, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String num = number[which];

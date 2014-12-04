@@ -6,4 +6,12 @@
         <item>@string/pf_number</item>
         <item>@string/bxgs_number</item>
     </array>
+    <string-array name="help_array">
+        <item>车祸后自救</item>
+        <item>道路遇险</item>
+        <item>迎面碰撞</item>
+        <item>车辆落水</item>
+        <item>汽车翻车</item>
+        <item>意外失火</item>
+    </string-array>
 </resources>

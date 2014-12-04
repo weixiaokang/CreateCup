@@ -1,6 +1,8 @@
 package com.weixiaokang.rescueteam.service;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -8,17 +10,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.weixiaokang.rescueteam.MainActivity;
+import com.weixiaokang.rescueteam.R;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p/>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
 public class SetupService extends IntentService {
 
     private static final String ACTION_FOO = "strat";
@@ -47,6 +44,20 @@ public class SetupService extends IntentService {
 
     public SetupService() {
         super("SetupService");
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.red_cross_jiji)
+                .setOngoing(true)
+                .setContentText("heheda");
+        Intent intent = new Intent();
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentIntent(pendingIntent);
+        Notification notification = builder.build();
+        startForeground(1, notification);
     }
 
     @Override

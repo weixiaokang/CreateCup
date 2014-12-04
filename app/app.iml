@@ -89,6 +89,7 @@
     <orderEntry type="library" exported="" name="AMap_3DMap_V2.3.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
+    <orderEntry type="library" exported="" name="volley" level="project" />
     <orderEntry type="library" exported="" name="Android_Location_V1.3.0" level="project" />
   </component>
 </module>
